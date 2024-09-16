@@ -66,9 +66,6 @@ class DroughtClassifier:
     def change_number_cpu_threads(self,num):
         torch.set_num_threads(num)
         return
-        
-    def binary_classifier(self, texts : list):
-        return self.binary(texts)
     
     #def multiclass_classifier(self, texts: list):
     #    return self.multiclass(texts)
@@ -150,7 +147,7 @@ class DroughtClassifier:
         #Binary classifier
         if runAll or 'binary' in modulesToLoad:
             print("\nPerforming binary classification")
-            results_binary = self.binary_classifier(articles,results_keyword)
+            results_binary = self.binary(articles,results_keyword)
         
         #Gather a list of articles being labeled as positives, also keep alongside it the index to the original
         #list to know where it was located in the original corpus (via a tuple-based system)
