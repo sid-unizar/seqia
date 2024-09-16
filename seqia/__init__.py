@@ -53,9 +53,9 @@ class DroughtClassifier:
         self.keyword = KeywordClassifier()
 
         #self.multiclass = MulticlassClassifier()
-        self.drought_impacts = DroughtImpactsClassifier()
+        self.drought_impacts = DroughtImpactsClassifier(device)
 
-        self.ner_location = NERLocation()
+        self.ner_location = NERLocation(device)
         
         self.sentence_split = SentenceSplitter()
 
