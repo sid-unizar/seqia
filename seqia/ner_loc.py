@@ -753,7 +753,7 @@ class NERLocation:
         
         #5-Countries
         if found[0] == '' and toponym in self.country_names:
-          found = ['country', self.country_names.index(toponym.strip())]
+          found = ['country', toponym.strip()]
         
         #6-Dams/reservoirs
         if toponym_uppercased.strip() in self.dam_names:
