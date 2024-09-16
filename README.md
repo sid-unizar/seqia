@@ -4,8 +4,6 @@ Python-based framework for the automatic detection of drought-related news and t
 
 GPU use strongly advised.
 
-![Esquema_software_seqia_v4](https://github.com/miguelopezotal/seqia/assets/74180331/c3d48f75-b594-4e62-8795-330c5fcfac5f)
-
 
 ## INSTALLATION
 
