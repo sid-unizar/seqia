@@ -31,10 +31,10 @@ class NERLocation:
   ##################
   ## Constructor ##
   #################
-  def __init__(self):
+  def __init__(self, device):
 
     #Load pipe
-    self.pipe = pipeline("token-classification", model=self.model_name)
+    self.pipe = pipeline("token-classification", model=self.model_name, device=device)
 
     #Load offline localization data from IGN and Geonames
     self.load_localization_data()
