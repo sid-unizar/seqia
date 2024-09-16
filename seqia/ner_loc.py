@@ -407,7 +407,13 @@ class NERLocation:
 
         line = line.split('\t')
 
-        countries[line[3]] = {'latitude': float(line[1].replace(',','.')), 'longitude': float(line[2].replace(',','.'))}
+        latitude = line[1].replace('\U00002013', '-').replace(',','.')
+        longitude = line[2].replace('\U00002013', '-').replace(',','.')
+
+        if latitude == '' or longitude == '':
+          continue
+
+        countries[line[3]] = {'latitude': float(latitude), 'longitude': float(longitude)}
 
     return countries
 
