@@ -11,7 +11,7 @@ class DroughtImpactsClassifier:
     impacts_and_base_model = {
         'Agricultura': ("PlanTL-GOB-ES/roberta-base-bne", 512),
         'Ganadería': ("PlanTL-GOB-ES/roberta-base-bne", 512),
-        'Recursos hídricos': ("PlanTL-GOB-ES/roberta-base-bne", 512),
+        'Recursos_hídricos': ("PlanTL-GOB-ES/roberta-base-bne", 512),
         'Energético': ("PlanTL-GOB-ES/roberta-base-bne", 512)
     }
 
