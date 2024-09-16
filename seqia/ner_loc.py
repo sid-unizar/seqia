@@ -271,7 +271,7 @@ class NERLocation:
       for kml in kml_files:
         with myzip.open(kml) as myfile:
           tmp_file_path = os.path.join((os.path.join(os.path.dirname(os.path.realpath(__file__)), 'loc_files')),kml)
-          with open(tmp_file_path,'w',encoding='utf-8') as fp:
+          with open(tmp_file_path,'wb',encoding='utf-8') as fp:
             fp.write(myfile.read())
             fp.seek(0)
           
@@ -289,7 +289,7 @@ class NERLocation:
     with zipfile.ZipFile(os.path.join((os.path.join(os.path.dirname(os.path.realpath(__file__)), 'loc_files')),file + '.kmz'), 'r') as myzip:
       with myzip.open(file + '.kml') as myfile:
         tmp_file_path = os.path.join((os.path.join(os.path.dirname(os.path.realpath(__file__)), 'loc_files')),file + '.kml')
-        with open(tmp_file_path,'w',encoding='utf-8') as fp:
+        with open(tmp_file_path,'wb',encoding='utf-8') as fp:
           fp.write(myfile.read())
           fp.seek(0)
 
