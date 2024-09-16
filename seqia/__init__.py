@@ -105,7 +105,7 @@ class DroughtClassifier:
                 problems.append((article['filename'],'HEADLINE_TOO_SHORT: ' + str(len(article['headline']))))
 
             #Is the article too long? (more than 4,096 BPE tokens)
-            article_length = len(tokenizer.tokenize(article['filename'] + '~' + article['body'])['input_ids'][0])
+            article_length = len(tokenizer.tokenize(article['filename'] + '~' + article['body']))
             if article_length >= 4096:
                 problems.append((article['filename'],'ARTICLE_TOO_LONG: ' + str(len(article['headline']))))
         
