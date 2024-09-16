@@ -17,13 +17,15 @@ class DroughtImpactsClassifier:
 
     
     #Constructor
-    def __init__(self,modelPath=''):
+    def __init__(self,device,modelPath=''):
 
         self.usesSingleTokenizer = True
         self.tokenizer = dict()
         self.model = dict()
         self.trainer = dict()
 
+        self.device = device
+        
         #We define a support function that loads a custom text file
         #in the repository that might contain a different list of
         #drought impacts than those that are hard-coded above. The
@@ -99,9 +101,9 @@ class DroughtImpactsClassifier:
             result_cur = list()
             for impact in self.impacts_and_base_model.keys():
                 if self.usesSingleTokenizer:
-                    logits_binary = self.model[impact](**self.tokenizer[list(self.impacts_and_base_model.keys())[0]](text, max_length=self.impacts_and_base_model[list(self.impacts_and_base_model.keys())[0]][1], pad_to_max_length=True,truncation=True,return_tensors='pt'))
+                    logits_binary = self.model[impact](**self.tokenizer[list(self.impacts_and_base_model.keys())[0]](text, max_length=self.impacts_and_base_model[list(self.impacts_and_base_model.keys())[0]][1], pad_to_max_length=True,truncation=True,return_tensors='pt').to(self.device)
                 else:
-                    logits_binary = self.model[impact](**self.tokenizer[impact](text, max_length=self.impacts_and_base_model[impact][1], pad_to_max_length=True,truncation=True,return_tensors='pt'))
+                    logits_binary = self.model[impact](**self.tokenizer[impact](text, max_length=self.impacts_and_base_model[impact][1], pad_to_max_length=True,truncation=True,return_tensors='pt').to(self.device))
                 predictions_binary = list(np.argmax(logits_binary.logits.detach().numpy(), axis=-1))
 
                 if 1 in predictions_binary:
