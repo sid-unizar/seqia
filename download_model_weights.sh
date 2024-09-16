@@ -8,6 +8,6 @@ declare -a arr=("binary binary_model" "Agricultura impacts/Agricultura" "Ganader
 for i in "${arr[@]}"
 do
    set -- $i
-   gh release download --repo miguelopezotal/seqia -p $1.bin -D ./seqia/models/$2/
+   gh release download --repo sid-unizar/seqia -p $1.bin -D ./seqia/models/$2/
    rename ./seqia/models/$2/$1.bin ./seqia/models/$2/pytorch_model.bin
 done
