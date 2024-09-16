@@ -90,7 +90,7 @@ This will do the same process as above, but automatically.
 
 ## USE
 
-The functionality of this library is implemented inside a main class called DroughtClassifier, of which you first have to create an instance. This is how it can be used:
+The functionality of this library is implemented inside a main class called `DroughtClassifier`, of which you first have to create an instance. This is how it can be used:
 
 ```
 from seqia import DroughtClassifier
