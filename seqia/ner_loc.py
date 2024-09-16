@@ -1012,6 +1012,8 @@ class NERLocation:
     for token in doc:
           if token.text == toponym:
 
+            head = token.head
+
             #1a) "río + Name"
             if token.head.text == 'río' or token.head.text == 'cuenca' or token.head.text == 'confederación' or token.head.text == 'confederación' or token.head.text == 'ribera' and token.dep_ == 'appos':
               token_type = 'riv'  #stream
@@ -1023,7 +1025,6 @@ class NERLocation:
 
             #2a) "ríos/cuencas/provincias de X, Y, Name and Z"
             elif token.head.tag_ == 'PROPN':
-              head = token.head
               if token.dep_ == 'appos':
                 if head.head.text == 'ríos' or head.head.text == 'cuencas' or head.head.text == 'confederaciones' or head.head.text == 'riberas':
                   token_type = 'riv'  #stream
