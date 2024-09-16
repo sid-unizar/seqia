@@ -749,7 +749,7 @@ class NERLocation:
               found = ['riv', self.riv_names.index('RIO ' + toponym_uppercased.strip())]
             else:
               if toponym in self.country_names:
-                found = ['country', self.country_names.index(toponym.strip())]
+                found = ['country', toponym.strip()]
         
         #5-Countries
         if found[0] == '' and toponym in self.country_names:
