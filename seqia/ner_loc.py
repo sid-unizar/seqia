@@ -717,9 +717,10 @@ class NERLocation:
             if ambRef:
               found[0] = self.disambiguate_toponym_type(toponym,doc_sentence)
 
-              if found[0] == 'riv': #BUGFIX: The output of the entry could be 'river', not necessarily 'town'!
-                  found[0] = 'town'    #Better default to 'town' than to river, obviously...
-                
+              if found[0] != 'town': #BUGFIX: The output of the entry could be 'river' or 'dam', not necessarily 'town'!
+                  if found[0] != 'prov':
+                      found[0] = 'town'    #Better default to 'town' than to river or dam, obviously...
+            
               ambRef = False
           
           elif found[0] == 'comm':
