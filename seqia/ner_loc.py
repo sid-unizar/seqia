@@ -716,6 +716,10 @@ class NERLocation:
             #by the keyword "provincia(s)". If it doesn't find that reference, it will default to identifying it as a town.
             if ambRef:
               found[0] = self.disambiguate_toponym_type(toponym,doc_sentence)
+
+              if found[0] == 'riv': #BUGFIX: The output of the entry could be 'river', not necessarily 'town'!
+                  found[0] = 'town'    #Better default to 'town' than to river, obviously...
+                
               ambRef = False
           
           elif found[0] == 'comm':
