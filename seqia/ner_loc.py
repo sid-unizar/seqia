@@ -1014,7 +1014,7 @@ class NERLocation:
     #check the syntactic relationships between a toponym and its surrounding words.
 
     token_type = 'town' #Return this value by default (default to "town")
-    for token in doc:
+    for i, token in enumerate(doc):
           if token.text == toponym:
 
             head = token.head
@@ -1050,6 +1050,21 @@ class NERLocation:
             else:
               #3- Det. + "river name" ("el Turia"/"al Turia"/"del Turia") >> REASON: In case of doubt, in Spanish, usually when an ambiguous name that
               #can refer to both a city and a river, it is usually a river (or a sports team; "el Barcelona") when precedeed by an article ("el Turia").
+              lefts = [left for left in token.lefts]
+              if len(lefts) == 0:
+                  try:
+                      left_token = doc[i-1]
+                  except IndexError:
+                      token_type = 'town'
+                      return token_type
+                  if left_token.dep_ == 'det' and left_token.head.text == token.text:
+                      if left_token.text == 'el':
+                        token_type = 'riv'
+                    
+                #3b) "al/del Turia"
+                elif left_token.dep_ == 'case' and left_token.head.text == token.text:
+                  if left_token.text == 'al' or left_token.text == 'del':
+                    token_type = 'riv'
               for left_token in token.lefts:
                 #3a) "el Turia"
                 if left_token.dep_ == 'det' and left_token.head.text == token.text:
