@@ -8,7 +8,7 @@ with open("README.md", "r") as f:
 setup(
     name="seqIA",
     version="1.0",
-    author="Miguel Lopez Otal",
+    author="Miguel López-Otal",
     author_email="mlopezotal@unizar.es",
     description="seqIA is a framework for extracting drought impacts and locations from newspaper archives (currently in Spanish).",
     long_description=long_description,
